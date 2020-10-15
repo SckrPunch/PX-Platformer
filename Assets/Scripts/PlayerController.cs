@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float movespeed = 5f;
     public float JumpForce = 10f;
     public bool isGrounded = false;
+    private AudioSource damageSound;
     private Rigidbody2D c_rigidBody2D;
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,14 @@ public class PlayerController : MonoBehaviour
         transform.position += movement * movespeed * Time.deltaTime;
         
        
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag.Equals("Damage"))
+        {
+            damageSound.Play();
+        }
     }
 
 }
