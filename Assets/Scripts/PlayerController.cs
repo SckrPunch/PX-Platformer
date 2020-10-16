@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         c_rigidBody2D = GetComponent<Rigidbody2D>();
+        damageSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
