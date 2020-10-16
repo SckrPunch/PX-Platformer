@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathMenu : MonoBehaviour
 {
+    public int time_played;
+    public int total_retries;
     public void RestartLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -29,8 +31,9 @@ public class DeathMenu : MonoBehaviour
         float end_time = Time.time;
 
         //data
-        int time_played = Mathf.RoundToInt(end_time - FieldManager.start_time);
-        int total_retries = FieldManager.retry_tutorial + FieldManager.retry_level;
+        time_played = Mathf.RoundToInt(end_time - FieldManager.start_time);
+        total_retries = FieldManager.retry_tutorial + FieldManager.retry_level;
+        //GameObject.FindObjectOfType<JsonConverter>().collect();
         Debug.Log(total_retries);
         Application.Quit();
     }
