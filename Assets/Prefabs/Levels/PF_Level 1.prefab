@@ -8754,7 +8754,7 @@ GameObject:
   - component: {fileID: 8820978354792463432}
   m_Layer: 0
   m_Name: Danger
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22132,7 +22132,7 @@ GameObject:
   - component: {fileID: 814934538080653973}
   m_Layer: 0
   m_Name: doors
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
