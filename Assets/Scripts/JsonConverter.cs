@@ -36,7 +36,7 @@ public class JsonConverter : MonoBehaviour
 
     void writeout(string json_)
     {
-        string dir = Application.dataPath + "/Data/JsonOutput";
+        string dir = Application.streamingAssetsPath + "/Data/JsonOutput";
         if (!Directory.Exists(dir))
         {
             Directory.CreateDirectory(dir);

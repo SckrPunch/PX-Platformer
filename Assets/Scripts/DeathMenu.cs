@@ -7,6 +7,7 @@ public class DeathMenu : MonoBehaviour
 {
     public int time_played;
     public int total_retries;
+
     public void RestartLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -26,15 +27,17 @@ public class DeathMenu : MonoBehaviour
         SceneManager.LoadScene(scene_num);
     }
 
-    public void QuitGame()
+    public void GetDataFields()
     {
         float end_time = Time.time;
 
         //data
         time_played = Mathf.RoundToInt(end_time - FieldManager.start_time);
         total_retries = FieldManager.retry_tutorial + FieldManager.retry_level;
-        //GameObject.FindObjectOfType<JsonConverter>().collect();
-        Debug.Log(total_retries);
+    }
+
+    public void EndGame()
+    {
         Application.Quit();
     }
 }
