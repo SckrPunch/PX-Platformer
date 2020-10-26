@@ -289,20 +289,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 568949834, guid: bfcf3daf5f51ec34a836d0221be191ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 1234312069, guid: bfcf3daf5f51ec34a836d0221be191ec, type: 3}
+      propertyPath: m_GravityScale
+      value: 1.05
+      objectReference: {fileID: 0}
     - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
         type: 3}
       propertyPath: deathMenu
       value: 
       objectReference: {fileID: 1978109562}
+    - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: JumpForce
+      value: 7.75
+      objectReference: {fileID: 0}
     - target: {fileID: 9205701904996015709, guid: bfcf3daf5f51ec34a836d0221be191ec,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -114.37
+      value: -154.94
       objectReference: {fileID: 0}
     - target: {fileID: 9205701904996015709, guid: bfcf3daf5f51ec34a836d0221be191ec,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.55
+      value: 14.33
       objectReference: {fileID: 0}
     - target: {fileID: 9205701904996015709, guid: bfcf3daf5f51ec34a836d0221be191ec,
         type: 3}
@@ -685,6 +698,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5370544215292952260, guid: 40bb5864279c82a4da9e44f1738241b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40bb5864279c82a4da9e44f1738241b6, type: 3}

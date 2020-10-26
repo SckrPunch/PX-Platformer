@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public float movespeed = 5f;
     public float JumpForce = 10f;
     public bool isGrounded = false;
+    public bool isDead = false;
     public GameObject deathMenu;
     private AudioSource damageSound;
     private Rigidbody2D c_rigidBody2D;
@@ -21,12 +22,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(c_rigidBody2D.velocity.y) < 0.001f)
+        if (Input.GetButtonDown("Jump") && Mathf.Abs(c_rigidBody2D.velocity.y) < 0.001f && !isDead)
         {
             c_rigidBody2D.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
         }
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f , 0f);
-        transform.position += movement * movespeed * Time.deltaTime;
+
+        if(!isDead)
+        {
+            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
+            transform.position += movement * movespeed * Time.deltaTime;
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -48,6 +54,7 @@ public class PlayerController : MonoBehaviour
     private void KillPlayer()
     {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        isDead = true;
         deathMenu.SetActive(true);
     }
 

@@ -8,6 +8,7 @@ ScriptsOnlyBuild:
     - PlayerController
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -40,6 +41,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
@@ -86,6 +88,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 12328}
     - Class: 114
       Script: {instanceID: 12374}
+    - Class: 114
+      Script: {instanceID: 12502}
     - Class: 114
       Script: {instanceID: 12506}
     - Class: 114
@@ -231,6 +235,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12374}
     - Class: 114
+      Script: {instanceID: 12502}
+    - Class: 114
       Script: {instanceID: 12506}
     - Class: 114
       Script: {instanceID: 12624}
@@ -277,7 +283,7 @@ ScriptsOnlyBuild:
     className: Button
   - hash:
       serializedVersion: 2
-      Hash: 6e3d8dc94c0cb1c82e5d963ca271cd4f
+      Hash: f74ecf8ed4d23f639fb0a4b181c2fc11
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -730,4 +736,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Tutorial.unity
   - Assets/Scenes/Level1.unity
-  playerPath: C:/Users/Alec/Desktop/PX/Test/PX Platformer.exe
+  playerPath: C:/Users/Alec/Desktop/PX/Positive/PX Platformer.exe
