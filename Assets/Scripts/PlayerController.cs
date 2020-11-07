@@ -5,34 +5,51 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movespeed = 5f;
+    public float moveSpeed = 5f;
     public float JumpForce = 10f;
-    public bool isGrounded = false;
-    public bool isDead = false;
+    
     public GameObject deathMenu;
+    public Transform groundCheck;
+    public Vector2 groundDistance;
+    public LayerMask groundMask;
+
+    private bool isGrounded = false;
+    private bool isDead = false;
     private AudioSource damageSound;
     private Rigidbody2D c_rigidBody2D;
-    // Start is called before the first frame update
+    private ContactFilter2D filter;
+    private Collider2D collider2d;
+
     void Start()
     {
         c_rigidBody2D = GetComponent<Rigidbody2D>();
         damageSound = GetComponent<AudioSource>();
+
+        collider2d = gameObject.GetComponent<BoxCollider2D>();
+        filter.useTriggers = false;
+        filter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Jump") && Mathf.Abs(c_rigidBody2D.velocity.y) < 0.001f && !isDead)
+        
+        float x = Input.GetAxis("Horizontal");
+        Vector2 movement = c_rigidBody2D.velocity;
+
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, groundDistance, 0, groundMask);
+
+        if (!isDead)
         {
-            c_rigidBody2D.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                movement.y = JumpForce;
+            }
+
+            movement.x = x * moveSpeed;
+
+            c_rigidBody2D.velocity = movement;
         }
 
-        if(!isDead)
-        {
-            Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-            transform.position += movement * movespeed * Time.deltaTime;
-        }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -58,5 +75,16 @@ public class PlayerController : MonoBehaviour
         deathMenu.SetActive(true);
     }
 
+    private bool CheckCollisions(Collider2D collider, Vector2 direction, float distance)
+    {
+        if(collider != null)
+        {
+            RaycastHit2D[] hits = new RaycastHit2D[10];
 
+            Debug.Log("Hello");
+            return true;
+        }
+        Debug.Log("Bye");
+        return false;
+    }
 }

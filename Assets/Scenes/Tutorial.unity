@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &80984108 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8167323736580010655, guid: bfcf3daf5f51ec34a836d0221be191ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1021471670}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &803511954
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,13 +295,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 568949834, guid: bfcf3daf5f51ec34a836d0221be191ec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -7.51
-      objectReference: {fileID: 0}
     - target: {fileID: 1234312069, guid: bfcf3daf5f51ec34a836d0221be191ec, type: 3}
       propertyPath: m_GravityScale
-      value: 1.05
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8167323736580010655, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.58
       objectReference: {fileID: 0}
     - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
         type: 3}
@@ -304,8 +311,43 @@ PrefabInstance:
       objectReference: {fileID: 1978109562}
     - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
         type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 80984108}
+    - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: groundDistance.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: groundDistance.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205701904996015682, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
       propertyPath: JumpForce
-      value: 7.75
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205701904996015708, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205701904996015708, guid: bfcf3daf5f51ec34a836d0221be191ec,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9205701904996015709, guid: bfcf3daf5f51ec34a836d0221be191ec,
         type: 3}
@@ -435,6 +477,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501029203200400240, guid: 7c27e6c912be8c343a0bb87a4cb46626,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c27e6c912be8c343a0bb87a4cb46626, type: 3}
