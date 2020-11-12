@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Damage
+  - Dropdown
+  - NextBtn
+  - BackBtn
+  - Error
+  - SurveySection
+  - SurveySubsection
+  - TextInput
   layers:
   - Default
   - TransparentFX
