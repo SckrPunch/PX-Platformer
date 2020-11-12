@@ -35,7 +35,6 @@ public class Survey : MonoBehaviour
     private List<string> answersCompleteS3 = new List<string>();
     private int subsectionCounter;
     private int sectionCounter;
-    private int subsectionIndex;
 
     //survey answer placeholders
     private List<int> answersPlaceholder = new List<int>();
@@ -51,25 +50,6 @@ public class Survey : MonoBehaviour
         subSections.Clear();
         dropdowns.Clear();
         textInput.Clear();
-
-        /*
-        if(subsectionIndex == 0)
-        {
-            previousSubsection = activeSubsection;
-        }
-        else
-        {
-            previousSubsection = subSections[subsectionIndex - 1];
-        }
-
-        if(subsectionIndex == (subSections.Count - 1))
-        {
-            nextSubsection = activeSubsection;
-        }
-        else
-        {
-            nextSubsection = subSections[subsectionIndex];
-        }*/
 
         //get all subsections in section
         foreach (var section in sections)
