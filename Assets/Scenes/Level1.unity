@@ -291,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 3014861204436826057, guid: 40bb5864279c82a4da9e44f1738241b6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: EndGame
+      value: GoToSurvey
       objectReference: {fileID: 0}
     - target: {fileID: 3014861204436826057, guid: 40bb5864279c82a4da9e44f1738241b6,
         type: 3}

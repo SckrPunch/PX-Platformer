@@ -90,7 +90,7 @@ public class DeathMenu : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         int scene_num = scene.buildIndex;
-        SceneManager.LoadScene(scene_num + 1);
+        SceneManager.LoadScene(3);
     }
 
     public void EndGame()

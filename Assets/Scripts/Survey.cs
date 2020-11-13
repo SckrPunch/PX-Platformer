@@ -37,6 +37,8 @@ public class Survey : MonoBehaviour
     private List<string> answersCompleteS3 = new List<string>();
     private int subsectionCounter;
     private int sectionCounter;
+    private float endTime;
+    private int timePlayed;
 
     //survey answer placeholders
     private List<int> answersPlaceholder = new List<int>();
@@ -44,6 +46,12 @@ public class Survey : MonoBehaviour
 
     [SerializeField]
     private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScKfsyKJy9iI_dbBuRMUvbPMPz42CySfYvakDMu2djr3nNJyg/formResponse";
+
+    private void Start()
+    {
+        endTime = Time.time;
+        timePlayed = Mathf.RoundToInt(endTime - FieldManager.start_time);
+    }
 
     // Update is called once per frame
     void Update()
