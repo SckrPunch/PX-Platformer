@@ -14,6 +14,7 @@ public class Survey : MonoBehaviour
     public GameObject previousSubsection;
     public GameObject errorMessage;
     public int gameType;
+    public GameObject text;
 
     public List<GameObject> subSections = new List<GameObject>();
     private List<GameObject> dropdowns = new List<GameObject>();

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: eb5db386999b07c439b0f2e615cfd6f4
+  - enabled: 1
+    path: Assets/Scenes/Survey.unity
+    guid: e5c017e55f2d6af4c90b5a10d7da2c86
   m_configObjects: {}

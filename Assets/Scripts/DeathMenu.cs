@@ -25,12 +25,10 @@ public class DeathMenu : MonoBehaviour
         if(scene_num == 1)
         {
             FieldManager.retry_tutorial++;
-            Debug.Log(FieldManager.retry_tutorial);
         }
         else
         {
             FieldManager.retry_level++;
-            Debug.Log(FieldManager.retry_level);
         }
 
         SceneManager.LoadScene(scene_num);
@@ -86,6 +84,13 @@ public class DeathMenu : MonoBehaviour
 
         string output_file = dir + "/" + System.DateTime.Now.ToString("yyyy-MM-dd") + ".json";
         File.WriteAllText(output_file, json_);
+    }
+
+    public void GoToSurvey()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        int scene_num = scene.buildIndex;
+        SceneManager.LoadScene(scene_num + 1);
     }
 
     public void EndGame()
