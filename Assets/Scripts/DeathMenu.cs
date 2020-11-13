@@ -13,9 +13,46 @@ public class DeathMenu : MonoBehaviour
     public int total_retries;
     public List<DataJsonFormat> jsonObj_ = new List<DataJsonFormat>();
     public int count_obj = 0;
+    public List<string> positiveLines = new List<string>();
+    public List<string> negativeLines = new List<string>();
+
+    //set game type 1 = positive 2 = neutral 3 = negative
+    public int gameType = 1;
 
     [SerializeField]
     private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeH4h69c9RlCvsGBObJf8GHh9Bczn6H6ggwIioy9NfCIP1W-w/formResponse";
+
+    private void Start()
+    {
+        positiveLines.Add("'I have not failed.I have found 10, 000 ways that don’t work.' — Thomas Edison");
+        positiveLines.Add("'Giving up is the only sure way to fail.' ― Gena Showalter");
+        positiveLines.Add("'The one who falls and gets up is stronger than the one who never tried.' ― Roy T. Bennett");
+        positiveLines.Add("'Failure happens all the time.What makes you better is how you react to it.' ― Mia Hamm");
+        positiveLines.Add("'Failure is only the opportunity to more intelligently begin again.' ― Henry Ford");
+
+        negativeLines.Add("What's wrong with you?");
+        negativeLines.Add("This game is supposed to be easy...");
+        negativeLines.Add("Ha ha! You died!");
+        negativeLines.Add("Don't do that next time.");
+        negativeLines.Add("I don't think that you play many video games...");
+    }
+
+    private void OnEnable()
+    {
+        UnityEngine.Random.Range(0, 4);
+
+        switch (gameType)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
+    }
 
     public void RestartLevel()
     {
