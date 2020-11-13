@@ -14,6 +14,9 @@ public class DeathMenu : MonoBehaviour
     public List<DataJsonFormat> jsonObj_ = new List<DataJsonFormat>();
     public int count_obj = 0;
 
+    [SerializeField]
+    private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeH4h69c9RlCvsGBObJf8GHh9Bczn6H6ggwIioy9NfCIP1W-w/formResponse";
+
     public void RestartLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -41,6 +44,8 @@ public class DeathMenu : MonoBehaviour
         time_played = Mathf.RoundToInt(end_time - FieldManager.start_time);
         total_retries = FieldManager.retry_tutorial + FieldManager.retry_level;
 
+        StartCoroutine(Post(time_played, total_retries, FieldManager.retry_level, FieldManager.retry_tutorial));
+
         //start json
         jsonObj_.Add(new DataJsonFormat());
         jsonObj_[count_obj].time_taken = time_played;
@@ -54,6 +59,20 @@ public class DeathMenu : MonoBehaviour
         //end json
 
         WriteJSON(json);
+    }
+
+    IEnumerator Post(int time_played, int total_retries, int retry_level, int retry_tutorial)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("entry.1515374140", time_played);
+        form.AddField("entry.1367920399", total_retries);
+        form.AddField("entry.605934596", retry_tutorial);
+        form.AddField("entry.1277183444", retry_level);
+
+        byte[] rawData = form.data;
+        WWW www = new WWW(BASE_URL, rawData);
+        yield return www;
+
     }
 
     public void WriteJSON(string json_)
