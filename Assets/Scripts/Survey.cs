@@ -39,6 +39,9 @@ public class Survey : MonoBehaviour
     private int sectionCounter;
     private float endTime;
     private int timePlayed;
+    int TotalRetries;
+    int TutorialRetries;
+    int LevelRetries;
 
     //survey answer placeholders
     private List<int> answersPlaceholder = new List<int>();
@@ -223,6 +226,10 @@ public class Survey : MonoBehaviour
 
     IEnumerator Post(List<int> answersCompleteS1, List<int> answersCompleteS2_dropdown, List<string> answersCompleteS2_text, List<string> answersCompleteS3, int gameType)
     {
+        TutorialRetries = FieldManager.retry_tutorial;
+        LevelRetries = FieldManager.retry_level;
+        TotalRetries = TutorialRetries + LevelRetries;
+
         WWWForm form = new WWWForm();
 
         //section 1
@@ -275,6 +282,11 @@ public class Survey : MonoBehaviour
 
 
         form.AddField("entry.2110178887", gameType);
+
+        form.AddField("entry.2099521190", timePlayed);
+        form.AddField("entry.1300402348", TotalRetries);
+        form.AddField("entry.1669791571", TutorialRetries);
+        form.AddField("entry.77906979", LevelRetries);
 
 
 
