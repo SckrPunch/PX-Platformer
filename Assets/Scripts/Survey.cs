@@ -228,6 +228,8 @@ public class Survey : MonoBehaviour
 
         if (!isError)
         {
+            Debug.Log("Submit");
+            SaveDropdownValues(activeSubsection.name);
             QuitGame();
 
             previousSubsection = activeSubsection;
