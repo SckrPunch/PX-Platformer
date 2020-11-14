@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using Unity;
 using Newtonsoft.Json;
+using TMPro;
 
 public class DeathMenu : MonoBehaviour
 {
@@ -15,14 +16,18 @@ public class DeathMenu : MonoBehaviour
     public int count_obj = 0;
     public List<string> positiveLines = new List<string>();
     public List<string> negativeLines = new List<string>();
+    public GameObject deathText;
+    public GameObject neutralText;
 
     //set game type 1 = positive 2 = neutral 3 = negative
-    public int gameType = 1;
+    public int gameType = 3;
+
+    private int lineSelection;
 
     [SerializeField]
     private string BASE_URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeH4h69c9RlCvsGBObJf8GHh9Bczn6H6ggwIioy9NfCIP1W-w/formResponse";
 
-    private void Start()
+    private void Awake()
     {
         positiveLines.Add("'I have not failed.I have found 10, 000 ways that don’t work.' — Thomas Edison");
         positiveLines.Add("'Giving up is the only sure way to fail.' ― Gena Showalter");
@@ -39,15 +44,19 @@ public class DeathMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        UnityEngine.Random.Range(0, 4);
+        lineSelection = UnityEngine.Random.Range(0, 4);
 
         switch (gameType)
         {
             case 1:
+                deathText.GetComponent<TMP_Text>().SetText(positiveLines[lineSelection]);
                 break;
             case 2:
+                deathText.SetActive(false);
+                neutralText.SetActive(true);
                 break;
             case 3:
+                deathText.GetComponent<TMP_Text>().SetText(negativeLines[lineSelection]);
                 break;
             default:
                 break;

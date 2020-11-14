@@ -172,6 +172,70 @@ public class Survey : MonoBehaviour
 
     }
 
+    public void CheckDropdownValuesEndSection()
+    {
+        bool isError = false;
+
+        for (int i = 0; i < dropdowns.Count; i++)
+        {
+            if (dropdowns[i].gameObject.GetComponent<TMP_Dropdown>().value == 0)
+            {
+                isError = true;
+                errorMessage.SetActive(true);
+            }
+        }
+
+        for (int i = 0; i < textInput.Count; i++)
+        {
+            if (textInput[i].gameObject.GetComponent<TMP_InputField>().text == "")
+            {
+                isError = true;
+                errorMessage.SetActive(true);
+            }
+        }
+
+        if (!isError)
+        {
+            GoToNextSection();
+
+            previousSubsection = activeSubsection;
+            activeSubsection.SetActive(false);
+            nextSubsection.SetActive(true);
+        }
+    }
+
+    public void CheckDropdownValuesSubmit()
+    {
+        bool isError = false;
+
+        for (int i = 0; i < dropdowns.Count; i++)
+        {
+            if (dropdowns[i].gameObject.GetComponent<TMP_Dropdown>().value == 0)
+            {
+                isError = true;
+                errorMessage.SetActive(true);
+            }
+        }
+
+        for (int i = 0; i < textInput.Count; i++)
+        {
+            if (textInput[i].gameObject.GetComponent<TMP_InputField>().text == "")
+            {
+                isError = true;
+                errorMessage.SetActive(true);
+            }
+        }
+
+        if (!isError)
+        {
+            QuitGame();
+
+            previousSubsection = activeSubsection;
+            activeSubsection.SetActive(false);
+            nextSubsection.SetActive(true);
+        }
+    }
+
     public void GoToNextSection()
     {
         SaveDropdownValues(activeSubsection.name);
@@ -206,7 +270,7 @@ public class Survey : MonoBehaviour
         answersCompleteS1.AddRange(answersSection1_6);
 
         //1 = Positive 2 = Neutral 3 = Negative
-        gameType = 1;
+        gameType = 3;
 
         answersCompleteS2_dropdown.AddRange(answersSection2_1_dropdown);
         answersCompleteS2_text.AddRange(answersSection2_1_text);
