@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Text.RegularExpressions;
+using UnityEngine.Networking;
 
 public class Survey : MonoBehaviour
 {
@@ -81,7 +83,6 @@ public class Survey : MonoBehaviour
 
                 foreach (Transform child in activeSection.transform)
                 {
-
                     if (child.gameObject.tag == "SurveySubsection" && !subSections.Contains(child.gameObject))
                     {
                         subSections.Add(child.gameObject);
@@ -230,7 +231,25 @@ public class Survey : MonoBehaviour
         {
             Debug.Log("Submit");
             SaveDropdownValues(activeSubsection.name);
-            QuitGame();
+            //QuitGame();
+
+            answersCompleteS1.AddRange(answersSection1_1);
+            answersCompleteS1.AddRange(answersSection1_2);
+            answersCompleteS1.AddRange(answersSection1_3);
+            answersCompleteS1.AddRange(answersSection1_4);
+            answersCompleteS1.AddRange(answersSection1_5);
+            answersCompleteS1.AddRange(answersSection1_6);
+
+            //1 = Positive 2 = Neutral 3 = Negative
+            gameType = 3;
+
+            answersCompleteS2_dropdown.AddRange(answersSection2_1_dropdown);
+            answersCompleteS2_text.AddRange(answersSection2_1_text);
+            answersCompleteS2_text.AddRange(answersSection2_2);
+
+            answersCompleteS3.AddRange(answersSection3_1);
+
+            StartCoroutine(PostForm(answersCompleteS1, answersCompleteS2_dropdown, answersCompleteS2_text, answersCompleteS3, gameType));
 
             previousSubsection = activeSubsection;
             activeSubsection.SetActive(false);
@@ -272,7 +291,7 @@ public class Survey : MonoBehaviour
         answersCompleteS1.AddRange(answersSection1_6);
 
         //1 = Positive 2 = Neutral 3 = Negative
-        gameType = 3;
+        gameType = 1;
 
         answersCompleteS2_dropdown.AddRange(answersSection2_1_dropdown);
         answersCompleteS2_text.AddRange(answersSection2_1_text);
@@ -280,7 +299,7 @@ public class Survey : MonoBehaviour
 
         answersCompleteS3.AddRange(answersSection3_1);
 
-        StartCoroutine(Post(answersCompleteS1, answersCompleteS2_dropdown, answersCompleteS2_text, answersCompleteS3, gameType));
+        StartCoroutine(PostForm(answersCompleteS1, answersCompleteS2_dropdown, answersCompleteS2_text, answersCompleteS3, gameType));
 
         Application.Quit();
 
@@ -374,6 +393,10 @@ public class Survey : MonoBehaviour
 
         foreach (var input in textInput)
         {
+            /*
+            string text = Regex.Replace(input.gameObject.GetComponent<TMP_InputField>().text, "[^\\w\\._]", "");
+            textPlaceholder.Add(text); */
+
             textPlaceholder.Add(input.gameObject.GetComponent<TMP_InputField>().text);
         }
         
@@ -440,6 +463,82 @@ public class Survey : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    IEnumerator PostForm(List<int> answersCompleteS1, List<int> answersCompleteS2_dropdown, List<string> answersCompleteS2_text, List<string> answersCompleteS3, int gameType)
+    {
+        TutorialRetries = FieldManager.retry_tutorial;
+        LevelRetries = FieldManager.retry_level;
+        TotalRetries = TutorialRetries + LevelRetries;
+
+        WWWForm form = new WWWForm();
+
+        //section 1
+        form.AddField("entry.1646509452", answersCompleteS1[0]);
+        form.AddField("entry.123365821", answersCompleteS1[1]);
+        form.AddField("entry.288170302", answersCompleteS1[2]);
+        form.AddField("entry.1145481869", answersCompleteS1[3]);
+        form.AddField("entry.430175792", answersCompleteS1[4]);
+        form.AddField("entry.1835718405", answersCompleteS1[5]);
+        form.AddField("entry.510499444", answersCompleteS1[6]);
+        form.AddField("entry.779086878", answersCompleteS1[7]);
+        form.AddField("entry.1784684340", answersCompleteS1[8]);
+        form.AddField("entry.730286654", answersCompleteS1[9]);
+        form.AddField("entry.1449589420", answersCompleteS1[10]);
+        form.AddField("entry.1097438337", answersCompleteS1[11]);
+        form.AddField("entry.2000936805", answersCompleteS1[12]);
+        form.AddField("entry.831843712", answersCompleteS1[13]);
+        form.AddField("entry.1355193469", answersCompleteS1[14]);
+        form.AddField("entry.118332121", answersCompleteS1[15]);
+        form.AddField("entry.1764540697", answersCompleteS1[16]);
+        form.AddField("entry.1444006081", answersCompleteS1[17]);
+        form.AddField("entry.590697014", answersCompleteS1[18]);
+        form.AddField("entry.1745510518", answersCompleteS1[19]);
+        form.AddField("entry.1117823425", answersCompleteS1[20]);
+        form.AddField("entry.130668445", answersCompleteS1[21]);
+        form.AddField("entry.969365196", answersCompleteS1[22]);
+        form.AddField("entry.1366294132", answersCompleteS1[23]);
+        form.AddField("entry.1068501694", answersCompleteS1[24]);
+        form.AddField("entry.1074549080", answersCompleteS1[25]);
+        form.AddField("entry.1386598348", answersCompleteS1[26]);
+        form.AddField("entry.2096109895", answersCompleteS1[27]);
+        form.AddField("entry.1467121606", answersCompleteS1[28]);
+        form.AddField("entry.1140242539", answersCompleteS1[29]);
+
+        // WWWForm form1 = new WWWForm();
+        //Section 2
+        form.AddField("entry.616429835", answersCompleteS2_dropdown[0]);
+        form.AddField("entry.285754025", answersCompleteS2_text[0]);
+        form.AddField("entry.447925714", answersCompleteS2_text[1]);
+        form.AddField("entry.170127727", answersCompleteS2_text[2]);
+        form.AddField("entry.386573068", answersCompleteS2_text[3]);
+        form.AddField("entry.1131524279", answersCompleteS2_text[4]);
+        form.AddField("entry.1488604533", answersCompleteS2_text[5]);
+        form.AddField("entry.1477548232", answersCompleteS2_text[6]);
+
+        //Section 3
+        form.AddField("entry.1050806395", answersCompleteS3[0]);
+        form.AddField("entry.995138048", answersCompleteS3[1]);
+        form.AddField("entry.1597929298", answersCompleteS3[2]);
+
+
+        form.AddField("entry.2110178887", gameType);
+
+        form.AddField("entry.2099521190", timePlayed);
+        form.AddField("entry.1300402348", TotalRetries);
+        form.AddField("entry.1669791571", TutorialRetries);
+        form.AddField("entry.77906979", LevelRetries);
+
+        using (UnityWebRequest www = UnityWebRequest.Post(BASE_URL, form))
+        {
+            yield return www.SendWebRequest();
+            Application.Quit();
+        }
+
+            //byte[] rawData = form.data;
+            //WWW www = new WWW(BASE_URL, rawData);
+            //yield return www;
+
     }
 
 }

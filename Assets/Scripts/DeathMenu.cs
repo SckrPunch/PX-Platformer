@@ -99,10 +99,10 @@ public class DeathMenu : MonoBehaviour
 
         count_obj++;
 
-        string json = JsonConvert.SerializeObject(jsonObj_);
+        //string json = JsonConvert.SerializeObject(jsonObj_);
         //end json
 
-        WriteJSON(json);
+        //WriteJSON(json);
     }
 
     IEnumerator Post(int time_played, int total_retries, int retry_level, int retry_tutorial)
@@ -116,7 +116,6 @@ public class DeathMenu : MonoBehaviour
         byte[] rawData = form.data;
         WWW www = new WWW(BASE_URL, rawData);
         yield return www;
-
     }
 
     public void WriteJSON(string json_)
