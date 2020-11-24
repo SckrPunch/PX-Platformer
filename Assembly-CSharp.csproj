@@ -62,7 +62,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\LeftCheck.cs" />
     <Compile Include="Assets\PlayerMovement.cs" />
+    <Compile Include="Assets\RightCheck.cs" />
     <Compile Include="Assets\Scripts\DataJsonFormat.cs" />
     <Compile Include="Assets\Scripts\DeathMenu.cs" />
     <Compile Include="Assets\Scripts\FieldManager.cs" />

@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
-        float x = Input.GetAxis("Horizontal");
+        float x = Input.GetAxisRaw("Horizontal");
         Vector2 movement = c_rigidBody2D.velocity;
+
 
         isGrounded = Physics2D.OverlapBox(groundCheck.position, groundDistance, 0, groundMask);
 
@@ -45,7 +45,19 @@ public class PlayerController : MonoBehaviour
                 movement.y = JumpForce;
             }
 
-            movement.x = x * moveSpeed;
+            if(x == 1 && RightCheck.rightCollision == true)
+            {
+                movement.x = 0;
+            }
+            else if(x == -1 && LeftCheck.leftCollision == true)
+            {
+                movement.x = 0;
+            }
+            else
+            {
+                movement.x = Input.GetAxis("Horizontal") * moveSpeed;
+            }
+            
 
             c_rigidBody2D.velocity = movement;
         }
@@ -66,6 +78,7 @@ public class PlayerController : MonoBehaviour
             int next_scene = scene.buildIndex + 1;
             SceneManager.LoadScene(next_scene);
         }
+        
     }
 
     private void KillPlayer()
@@ -87,4 +100,5 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Bye");
         return false;
     }
+
 }

@@ -12,6 +12,7 @@ TagManager:
   - SurveySection
   - SurveySubsection
   - TextInput
+  - Ground
   layers:
   - Default
   - TransparentFX
